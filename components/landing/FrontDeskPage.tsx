@@ -9,6 +9,7 @@ import LeadGenModal, { LeadData } from './LeadGenModal';
 import ComparisonBlock from './ComparisonBlock';
 import FeaturesBlock from './FeaturesBlock';
 import FaqSection from './FaqSection';
+import LiveAgentCard from './LiveAgentCard';
 import { firePhoneRevealConversion } from '@/lib/gtag';
 
 interface FrontDeskPageProps {
@@ -80,10 +81,11 @@ const FrontDeskPage: React.FC<FrontDeskPageProps> = ({ onNavigate }) => {
           <p className="text-gray-500 text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed mb-12">
             Automatizza il 100% delle chiamate in entrata. Prenota appuntamenti, rispondi alle FAQ e gestisci emergenze.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a href="#contact" className="bg-shore-blue text-white px-8 py-4 rounded-full text-lg font-medium hover:scale-105 transition-transform shadow-lg shadow-blue-500/20 inline-block">
               Attiva Receptionist
             </a>
+            <LiveAgentCard label="Receptionist · Live" phoneHref="tel:+390287364217" />
           </div>
         </div>
       </div>

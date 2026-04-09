@@ -54,6 +54,7 @@ const cards: CardData[] = [
     title: 'Venditore Auto',
     description: "Qualifica i potenziali acquirenti, fissa appuntamenti in concessionaria e gestisci richieste di preventivo.",
     bgImage: '/autofeatured.png',
+    href: '/venditore-auto',
   },
   {
     number: '05.',

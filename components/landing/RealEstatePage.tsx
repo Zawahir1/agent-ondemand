@@ -10,6 +10,7 @@ import ComparisonBlock from './ComparisonBlock';
 import FeaturesBlock from './FeaturesBlock';
 import FaqSection from './FaqSection';
 import VideoSection from './VideoSection';
+import LiveAgentCard from './LiveAgentCard';
 import { firePhoneRevealConversion } from '@/lib/gtag';
 
 interface RealEstatePageProps {
@@ -77,10 +78,11 @@ const RealEstatePage: React.FC<RealEstatePageProps> = ({ onNavigate }) => {
           <p className="text-gray-500 text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed mb-12">
             Risponde ai clienti, qualifica i lead e organizza le visite, senza interruzioni e senza errori.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a href="#contact" className="bg-shore-blue text-white px-8 py-4 rounded-full text-lg font-medium hover:scale-105 transition-transform shadow-lg shadow-blue-500/20 inline-block">
               Attiva Agente di Vendita
             </a>
+            <LiveAgentCard label="Agente Immobiliare · Live" phoneHref="tel:+390287364217" />
           </div>
         </div>
       </div>

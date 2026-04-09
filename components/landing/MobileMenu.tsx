@@ -115,6 +115,14 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onNavigate }) 
                                                         <div className="font-medium">Receptionist Palestre</div>
                                                         <div className="text-xs text-gray-400 mt-0.5">Iscrizioni, corsi e assistenza per palestre</div>
                                                     </button>
+
+                                                    <button
+                                                        onClick={() => handleNav('venditore-auto')}
+                                                        className="text-left py-2 text-gray-600 hover:text-shore-blue text-sm"
+                                                    >
+                                                        <div className="font-medium">Venditore Auto</div>
+                                                        <div className="text-xs text-gray-400 mt-0.5">Qualificazione lead e test drive automatici</div>
+                                                    </button>
                                                 </div>
                                             </motion.div>
                                         )}

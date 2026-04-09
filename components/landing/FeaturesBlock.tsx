@@ -26,16 +26,20 @@ export default function FeaturesBlock({
 
   return (
     <section className="w-full max-w-[1400px] mx-auto px-4 py-20">
-      {/* Outer wrapper: image sits naturally, card overlaps it absolutely */}
-      <div className="relative w-full rounded-[40px] overflow-hidden shadow-xl shadow-black/10">
+      {/*
+        Container has an explicit min-height so the glass card always has
+        room regardless of the image's natural aspect ratio.
+        The Image uses `fill` + object-cover for consistent cropping on all screens.
+      */}
+      <div className="relative w-full rounded-[40px] overflow-hidden shadow-xl shadow-black/10
+        min-h-[420px] sm:min-h-[480px] md:min-h-[546px] lg:min-h-[630px]">
 
-        {/* Background image — constrained height, never cropped on sides */}
+        {/* Background image — fills container, cropped to cover */}
         <Image
           src={imageSrc}
           alt={imageAlt}
-          width={1400}
-          height={900}
-          className="w-full h-auto block object-cover max-h-[546px] md:max-h-[630px]"
+          fill
+          className="object-cover"
           sizes="(max-width: 768px) 100vw, 1400px"
           priority
         />

@@ -73,6 +73,17 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
               <span className="text-sm font-medium text-gray-900">Receptionist Palestre</span>
               <span className="text-[10px] text-gray-500 group-hover/item:text-gray-600 leading-tight">Iscrizioni, corsi e assistenza per palestre</span>
             </a>
+
+            <div className="h-px bg-gray-100 my-1 mx-2"></div>
+
+            <a
+              href="/venditore-auto"
+              onClick={(e) => handleNav(e, 'venditore-auto')}
+              className="flex flex-col gap-0.5 px-4 py-3 rounded-xl hover:bg-gray-50 transition-colors group/item"
+            >
+              <span className="text-sm font-medium text-gray-900">Venditore Auto</span>
+              <span className="text-[10px] text-gray-500 group-hover/item:text-gray-600 leading-tight">Qualificazione lead e test drive automatici</span>
+            </a>
           </div>
         </div>
       </div>

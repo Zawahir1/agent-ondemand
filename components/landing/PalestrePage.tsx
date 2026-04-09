@@ -10,6 +10,7 @@ import ComparisonBlock from './ComparisonBlock';
 import FeaturesBlock from './FeaturesBlock';
 import FaqSection from './FaqSection';
 import VideoSection from './VideoSection';
+import LiveAgentCard from './LiveAgentCard';
 import { firePhoneRevealConversion } from '@/lib/gtag';
 
 interface PalestrePageProps {
@@ -209,13 +210,14 @@ const PalestrePage: React.FC<PalestrePageProps> = ({ onNavigate }) => {
           <p className="text-gray-500 text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed mb-12">
             Risponde a ogni richiesta, qualifica i contatti e fissa prove gratuite senza intervento umano.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
               href="#contact"
               className="bg-shore-blue text-white px-8 py-4 rounded-full text-lg font-medium hover:scale-105 transition-transform shadow-lg shadow-blue-500/20 inline-block"
             >
               Attiva Agente Palestra
             </a>
+            <LiveAgentCard label="Receptionist Palestre · Live" phoneHref="tel:+390287364217" />
           </div>
         </div>
       </div>
