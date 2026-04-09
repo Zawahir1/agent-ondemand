@@ -111,8 +111,8 @@ const jsonLd = {
       description: 'Scopri come un agente vocale AI qualifica acquirenti e fissa test drive per una concessionaria auto.',
       thumbnailUrl: 'https://agent-ondemand.com/og-video-venditore-auto.jpg',
       uploadDate: '2026-04-08',
-      contentUrl: 'https://www.youtube.com/shorts/dQw4w9WgXcQ',
-      embedUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+      contentUrl: 'https://www.youtube.com/shorts/1_t2aqdQQgA',
+      embedUrl: 'https://www.youtube.com/embed/1_t2aqdQQgA',
     },
   ],
 };

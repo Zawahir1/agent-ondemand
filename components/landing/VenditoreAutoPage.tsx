@@ -181,10 +181,9 @@ const VenditoreAutoPage: React.FC<VenditoreAutoPageProps> = ({ onNavigate }) => 
       </div>
 
       {/* ── VIDEO ── */}
-      {/* TODO: Marco to provide actual car dealership demo video URL */}
       <VideoSection
         heading="Guarda il video"
-        videoSrc="https://www.youtube.com/embed/dQw4w9WgXcQ"
+        videoSrc="https://www.youtube.com/embed/1_t2aqdQQgA"
         videoTitle="Demo agente vocale AI per concessionarie auto"
       />
 
