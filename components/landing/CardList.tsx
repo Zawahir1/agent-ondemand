@@ -46,26 +46,20 @@ const cards: CardData[] = [
     number: '03.',
     title: 'Receptionist Palestre',
     description: "Gestisci iscrizioni, rinnovi, prenotazioni corsi e richieste informazioni per la tua palestra in automatico.",
-    // TODO: Marco to provide image for this card — using placeholder path
-    bgImage: '/images/palestre.jpg',
-    bgFallback: 'bg-gray-800',
+    bgImage: '/gymfeatured.png',
     href: '/palestre',
   },
   {
     number: '04.',
     title: 'Venditore Auto',
     description: "Qualifica i potenziali acquirenti, fissa appuntamenti in concessionaria e gestisci richieste di preventivo.",
-    // TODO: Marco to provide image for this card — using placeholder path
-    bgImage: '/images/venditore-auto.jpg',
-    bgFallback: 'bg-gray-800',
+    bgImage: '/autofeatured.png',
   },
   {
     number: '05.',
     title: 'Segretaria Personale',
     description: "Gestisce il tuo calendario, filtra le chiamate e organizza le tue giornate come una vera assistente personale.",
-    // TODO: Marco to provide image for this card — using placeholder path
-    bgImage: '/images/segretaria.jpg',
-    bgFallback: 'bg-gray-800',
+    bgImage: '/segretaria-personalize.png',
   },
   {
     number: '06.',
@@ -77,7 +71,7 @@ const cards: CardData[] = [
     number: '07.',
     title: 'Venditore Inbound Outbound',
     description: "Gestisci chiamate in entrata e campagne outbound con un agente di vendita vocale sempre pronto a convertire.",
-    bgImage: '/3.png',
+    bgImage: '/inbound-outbound.png',
   },
   {
     number: '08.',

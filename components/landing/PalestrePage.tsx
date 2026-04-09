@@ -232,7 +232,7 @@ const PalestrePage: React.FC<PalestrePageProps> = ({ onNavigate }) => {
           { title: "Gestisce più richieste", description: "insieme, senza attese" },
           { title: "Aggiorna il team", description: "automaticamente" },
         ]}
-        imageSrc="/3.png"
+        imageSrc="/gym-assistant.png"
         imageAlt="Agente vocale AI per palestre italiane"
         imagePosition="left"
       />

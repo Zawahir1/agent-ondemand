@@ -141,9 +141,10 @@ const WorkflowSection: React.FC<WorkflowSectionProps> = ({ onNavigate }) => {
 
         <div className="bg-[#0B1120] border border-gray-800 rounded-[40px] p-6 md:p-10 w-full overflow-x-auto">
           <div className="flex gap-6 min-w-[1000px]">
-            <Column title="1. Seleziona Nicchia" count={2}>
+            <Column title="1. Seleziona Nicchia" count={3}>
               <Card title="Reception Front Desk" />
               <Card title="Agente Immobiliare" />
+              <Card title="Receptionist Palestre" />
             </Column>
 
             <Column title="2. Personalizzazione" count={3}>
