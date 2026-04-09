@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --radius: 0.5rem;
+  --font-inter: 'Inter', sans-serif;
+  --font-jetbrains: 'JetBrains Mono', monospace;
+}
+
+body {
+  background: #FAFAFA;
+  color: #111111;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
+/* Utility: hide scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
