@@ -112,19 +112,49 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
 
       {/* Auth Buttons */}
       <div className="flex items-center ml-2 border-l border-gray-100 pl-4 gap-2">
-        <button
-          onClick={() => { if (onNavigate) onNavigate('coming-soon'); }}
-          className="px-4 py-2.5 text-sm font-medium text-gray-600 hover:text-black transition-colors"
-        >
-          Accedi
-        </button>
 
-        <button
-          onClick={() => { if (onNavigate) onNavigate('coming-soon'); }}
-          className="bg-shore-blue text-white px-7 py-2.5 rounded-full text-sm font-medium hover:bg-opacity-90 transition-all duration-200 shadow-lg shadow-blue-500/20"
-        >
-          Inizia Ora
-        </button>
+        {/* Accedi Dropdown */}
+        <div className="relative group">
+          <button className="px-4 py-2.5 text-sm font-medium text-gray-600 hover:text-black transition-colors flex items-center gap-1.5 focus:outline-none">
+            Accedi
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="opacity-50 group-hover:opacity-100 group-hover:rotate-180 transition-all duration-300">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div className="absolute top-full right-0 mt-2 w-52 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right -translate-y-2 group-hover:translate-y-0 pt-2 z-50">
+            <div className="bg-white/95 backdrop-blur-2xl border border-gray-200 rounded-2xl p-2 shadow-xl">
+              <a href="https://receptionist.agent-ondemand.com" target="_blank" rel="noopener noreferrer" className="flex items-center px-4 py-3 rounded-xl hover:bg-gray-50 transition-colors">
+                <span className="text-sm font-medium text-gray-900">Receptionist</span>
+              </a>
+              <div className="h-px bg-gray-100 my-1 mx-2"></div>
+              <a href="https://real-estate.agent-ondemand.com" target="_blank" rel="noopener noreferrer" className="flex items-center px-4 py-3 rounded-xl hover:bg-gray-50 transition-colors">
+                <span className="text-sm font-medium text-gray-900">Immobiliare</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Inizia Ora Dropdown */}
+        <div className="relative group">
+          <button className="bg-shore-blue text-white px-7 py-2.5 rounded-full text-sm font-medium hover:bg-opacity-90 transition-all duration-200 shadow-lg shadow-blue-500/20 flex items-center gap-2 focus:outline-none">
+            Inizia Ora
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="opacity-70 group-hover:rotate-180 transition-all duration-300">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div className="absolute top-full right-0 mt-2 w-52 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right -translate-y-2 group-hover:translate-y-0 pt-2 z-50">
+            <div className="bg-white/95 backdrop-blur-2xl border border-gray-200 rounded-2xl p-2 shadow-xl">
+              <a href="https://receptionist.agent-ondemand.com" target="_blank" rel="noopener noreferrer" className="flex items-center px-4 py-3 rounded-xl hover:bg-gray-50 transition-colors">
+                <span className="text-sm font-medium text-gray-900">Receptionist</span>
+              </a>
+              <div className="h-px bg-gray-100 my-1 mx-2"></div>
+              <a href="https://real-estate.agent-ondemand.com" target="_blank" rel="noopener noreferrer" className="flex items-center px-4 py-3 rounded-xl hover:bg-gray-50 transition-colors">
+                <span className="text-sm font-medium text-gray-900">Immobiliare</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
       </div>
     </nav>
   );

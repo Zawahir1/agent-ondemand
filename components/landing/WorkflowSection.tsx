@@ -95,12 +95,25 @@ const WorkflowSection: React.FC<WorkflowSectionProps> = ({ onNavigate }) => {
               </span>{' '}
             </h2>
             <div className="mt-8 mb-12">
-              <button
-                onClick={() => { if (onNavigate) onNavigate('coming-soon'); }}
-                className="bg-shore-blue text-white px-8 py-3 rounded-full text-lg font-medium hover:bg-opacity-90 transition-all duration-200 shadow-lg shadow-blue-500/20"
-              >
-                Vai alla dashboard
-              </button>
+              <div className="relative group inline-block">
+                <button className="bg-shore-blue text-white px-8 py-3 rounded-full text-lg font-medium hover:bg-opacity-90 transition-all duration-200 shadow-lg shadow-blue-500/20 flex items-center gap-2 focus:outline-none">
+                  Vai alla dashboard
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="opacity-70 group-hover:rotate-180 transition-all duration-300">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+                <div className="absolute top-full left-0 mt-2 w-52 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left -translate-y-2 group-hover:translate-y-0 pt-2 z-50">
+                  <div className="bg-white/95 backdrop-blur-2xl border border-gray-200 rounded-2xl p-2 shadow-xl">
+                    <a href="https://receptionist.agent-ondemand.com" target="_blank" rel="noopener noreferrer" className="flex items-center px-4 py-3 rounded-xl hover:bg-gray-50 transition-colors">
+                      <span className="text-sm font-medium text-gray-900">Receptionist</span>
+                    </a>
+                    <div className="h-px bg-gray-100 my-1 mx-2"></div>
+                    <a href="https://real-estate.agent-ondemand.com" target="_blank" rel="noopener noreferrer" className="flex items-center px-4 py-3 rounded-xl hover:bg-gray-50 transition-colors">
+                      <span className="text-sm font-medium text-gray-900">Immobiliare</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
           </motion.div>
 

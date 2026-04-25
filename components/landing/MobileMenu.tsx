@@ -11,6 +11,8 @@ interface MobileMenuProps {
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onNavigate }) => {
     const [agentsOpen, setAgentsOpen] = useState(false);
+    const [accediOpen, setAccediOpen] = useState(false);
+    const [iniziaOpen, setIniziaOpen] = useState(false);
     const router = useRouter();
 
     const handleNav = (page: string, anchor?: string) => {
@@ -146,19 +148,69 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onNavigate }) 
 
                             {/* Footer Actions */}
                             <div className="mt-auto pt-8 flex flex-col space-y-4">
-                                <button
-                                    onClick={() => handleNav('coming-soon')}
-                                    className="w-full py-3 text-center text-gray-600 font-medium hover:text-black border border-gray-200 rounded-xl transition-colors"
-                                >
-                                    Accedi
-                                </button>
 
-                                <button
-                                    onClick={() => handleNav('coming-soon')}
-                                    className="w-full py-3 text-center text-white bg-shore-blue font-medium rounded-xl shadow-lg shadow-blue-500/20 hover:bg-blue-600 transition-colors"
-                                >
-                                    Inizia Ora
-                                </button>
+                                {/* Accedi Expandable */}
+                                <div className="border border-gray-200 rounded-xl overflow-hidden">
+                                    <button
+                                        onClick={() => setAccediOpen(!accediOpen)}
+                                        className="w-full py-3 px-4 flex items-center justify-between text-gray-600 font-medium hover:text-black transition-colors"
+                                    >
+                                        <span>Accedi</span>
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`transition-transform duration-300 ${accediOpen ? 'rotate-180' : ''}`}>
+                                            <polyline points="6 9 12 15 18 9"></polyline>
+                                        </svg>
+                                    </button>
+                                    <AnimatePresence>
+                                        {accediOpen && (
+                                            <motion.div
+                                                initial={{ height: 0, opacity: 0 }}
+                                                animate={{ height: 'auto', opacity: 1 }}
+                                                exit={{ height: 0, opacity: 0 }}
+                                                className="overflow-hidden border-t border-gray-100"
+                                            >
+                                                <a href="https://receptionist.agent-ondemand.com" target="_blank" rel="noopener noreferrer" className="block px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-shore-blue transition-colors">
+                                                    Receptionist
+                                                </a>
+                                                <div className="h-px bg-gray-100 mx-4"></div>
+                                                <a href="https://real-estate.agent-ondemand.com" target="_blank" rel="noopener noreferrer" className="block px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-shore-blue transition-colors">
+                                                    Immobiliare
+                                                </a>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
+
+                                {/* Inizia Ora Expandable */}
+                                <div className="bg-shore-blue rounded-xl overflow-hidden shadow-lg shadow-blue-500/20">
+                                    <button
+                                        onClick={() => setIniziaOpen(!iniziaOpen)}
+                                        className="w-full py-3 px-4 flex items-center justify-between text-white font-medium hover:bg-blue-600 transition-colors"
+                                    >
+                                        <span>Inizia Ora</span>
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`transition-transform duration-300 ${iniziaOpen ? 'rotate-180' : ''}`}>
+                                            <polyline points="6 9 12 15 18 9"></polyline>
+                                        </svg>
+                                    </button>
+                                    <AnimatePresence>
+                                        {iniziaOpen && (
+                                            <motion.div
+                                                initial={{ height: 0, opacity: 0 }}
+                                                animate={{ height: 'auto', opacity: 1 }}
+                                                exit={{ height: 0, opacity: 0 }}
+                                                className="overflow-hidden border-t border-blue-400/30"
+                                            >
+                                                <a href="https://receptionist.agent-ondemand.com" target="_blank" rel="noopener noreferrer" className="block px-4 py-3 text-sm font-medium text-white/90 hover:bg-blue-600 hover:text-white transition-colors">
+                                                    Receptionist
+                                                </a>
+                                                <div className="h-px bg-blue-400/30 mx-4"></div>
+                                                <a href="https://real-estate.agent-ondemand.com" target="_blank" rel="noopener noreferrer" className="block px-4 py-3 text-sm font-medium text-white/90 hover:bg-blue-600 hover:text-white transition-colors">
+                                                    Immobiliare
+                                                </a>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
+
                             </div>
 
                         </div>
