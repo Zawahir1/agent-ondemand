@@ -1,5 +1,12 @@
 export const translations = {
   "en": {
+    "blog.meta.title": "AI Calling & Voice AI Blog | Agent On Demand",
+    "blog.meta.desc": "Read the latest news, guides, and articles about the future of vocal AI, AI receptionists, and voice automation.",
+    "blog.heading": "Our Blog",
+    "blog.paragraph": "The future of vocal AI is changing how businesses connect with customers. AI call agents and virtual receptionists now hold natural, human-like conversations, answering calls 24/7, scheduling bookings, and qualifying leads. Explore our articles to learn how conversational voice automation boosts efficiency, reduces missed leads, and enhances customer satisfaction across industries like healthcare, real estate, and finance.",
+    "blog.faq.heading": "Frequently Asked Questions",
+    "blog.takeaways.heading": "Key Takeaways",
+    "blog.toc.heading": "Table of Contents",
     "pricing.plan.standard.name": "AI Call Agent",
     "pricing.plan.standard.price": "€150",
     "pricing.plan.standard.period": "/month",
@@ -2174,6 +2181,13 @@ export const translations = {
     "outbound.finalcta.btnSecondary": "See Outbound AI in Action"
   },
   "it": {
+    "blog.meta.title": "Blog di Chiamate AI e Voice AI | Agent On Demand",
+    "blog.meta.desc": "Leggi le ultime novità, guide e articoli sul futuro dell'IA vocale, dei receptionist AI e dell'automazione della voce.",
+    "blog.heading": "Il Nostro Blog",
+    "blog.paragraph": "Il futuro dell'IA vocale sta cambiando il modo in cui le aziende si connettono con i clienti. Gli agenti di chiamata AI e i receptionist virtuali ora gestiscono conversazioni naturali e umane, rispondendo alle chiamate 24/7, programmando prenotazioni e qualificando i lead. Esplora i nostri articoli per scoprire come l'automazione vocale aumenta l'efficienza, riduce i lead persi e migliora la soddisfazione dei clienti in settori come sanità, immobiliare e finanza.",
+    "blog.faq.heading": "Domande Frequenti",
+    "blog.takeaways.heading": "Punti Chiave",
+    "blog.toc.heading": "Indice dei Contenuti",
     "pricing.plan.standard.name": "Agente Telefonico AI",
     "pricing.plan.standard.price": "€150",
     "pricing.plan.standard.period": "/mese",
@@ -4349,6 +4363,13 @@ export const translations = {
     "outbound.finalcta.btnSecondary": "See Outbound AI in Action"
   },
   "es": {
+    "blog.meta.title": "Blog de Llamadas de IA y Voz de IA | Agent On Demand",
+    "blog.meta.desc": "Lea las últimas noticias, guías y artículos sobre el futuro de la IA de voz, recepcionistas de IA y automatización de voz.",
+    "blog.heading": "Nuestro Blog",
+    "blog.paragraph": "El futuro de la IA de voz está cambiando la forma en que las empresas se conectan con los clientes. Los agentes de llamadas de IA y los recepcionistas virtuales ahora mantienen conversaciones naturales y humanas, respondiendo llamadas las 24 horas, los 7 días de la semana, programando reservas y calificando clientes potenciales. Explore nuestros artículos para aprender cómo la automatización de voz conversacional aumenta la eficiencia, reduce las oportunidades perdidas y mejora la satisfacción del cliente en sectores como la salud, los bienes raíces y las finanzas.",
+    "blog.faq.heading": "Preguntas Frecuentes",
+    "blog.takeaways.heading": "Conclusiones Clave",
+    "blog.toc.heading": "Tabla de Contenidos",
     "pricing.plan.standard.name": "Agente de Llamadas AI",
     "pricing.plan.standard.price": "€150",
     "pricing.plan.standard.period": "/mes",
@@ -6524,6 +6545,13 @@ export const translations = {
     "outbound.finalcta.btnSecondary": "See Outbound AI in Action"
   },
   "fr": {
+    "blog.meta.title": "Blog sur l'Appel IA et l'IA Vocale | Agent On Demand",
+    "blog.meta.desc": "Lisez les dernières nouvelles, guides et articles sur l'avenir de l'IA vocale, des réceptionnistes IA et de l'automatisation de la voix.",
+    "blog.heading": "Notre Blog",
+    "blog.paragraph": "L'avenir de l'IA vocale change la façon dont las entreprises se connectent avec leurs clients. Les agents d'appel IA et les réceptionnistes virtuels mènent désormais des conversations naturelles et humaines, répondant aux appels 24/7, planifiant des réservations et qualifiant les prospects. Explorez nos articles pour découvrir comment l'automatisation de la voix conversationnelle augmente l'efficacité, réduit les prospects manqués et améliore la satisfaction client dans des secteurs comme la santé, l'immobilier et la finance.",
+    "blog.faq.heading": "Questions Fréquentes",
+    "blog.takeaways.heading": "Points Clés",
+    "blog.toc.heading": "Table des Matières",
     "pricing.plan.standard.name": "Agent d'Appel IA",
     "pricing.plan.standard.price": "€150",
     "pricing.plan.standard.period": "/mois",
@@ -8699,6 +8727,13 @@ export const translations = {
     "outbound.faq.a17": "Yes. It supports integrations with CRMs, Zapier, Make, webhooks, and APIs so it can fit into your current workflow easily."
   },
   "de": {
+    "blog.meta.title": "KI-Anrufe & Sprach-KI-Blog | Agent On Demand",
+    "blog.meta.desc": "Lesen Sie die neuesten Nachrichten, Leitfäden und Artikel über die Zukunft der Sprach-KI, KI-Rezeptionisten und Sprachautomatisierung.",
+    "blog.heading": "Unser Blog",
+    "blog.paragraph": "Die Zukunft der Sprach-KI verändert die Art und Weise, wie Unternehmen mit Kunden in Kontakt treten. KI-Anrufer und virtuelle Rezeptionisten führen heute natürliche, menschenähnliche Gespräche, beantworten Anrufe rund um die Uhr, planen Buchungen und qualifizieren Leads. Entdecken Sie unsere Artikel, um zu erfahren, wie dialogorientierte Sprachautomatisierung die Effizienz steigert, verpasste Leads reduziert und die Kundenzufriendenheit in Branchen wie dem Gesundheitswesen, Immobilien und Finanzen verbessert.",
+    "blog.faq.heading": "Häufig gestellte Fragen",
+    "blog.takeaways.heading": "Wichtige Erkenntnisse",
+    "blog.toc.heading": "Inhaltsverzeichnis",
     "pricing.plan.standard.name": "KI-Anruf-Agent",
     "pricing.plan.standard.price": "€150",
     "pricing.plan.standard.period": "/Monat",
