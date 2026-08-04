@@ -20,6 +20,7 @@ export default config({
       path: 'content/posts/*',
       format: { contentField: 'content' },
       entryLayout: 'content',
+
       schema: {
         title: fields.text({ label: 'Title' }),
         slug: fields.slug({ name: { label: 'Slug' } }),
