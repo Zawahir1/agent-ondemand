@@ -2,15 +2,12 @@ import { config, fields, collection } from '@keystatic/core';
 
 export default config({
   storage:
-    process.env.NODE_ENV === 'production' &&
-    process.env.KEYSTATIC_GITHUB_CLIENT_ID &&
-    process.env.KEYSTATIC_GITHUB_CLIENT_SECRET &&
-    process.env.KEYSTATIC_SECRET
+    process.env.NEXT_PUBLIC_VERCEL_ENV
       ? {
           kind: 'github',
           repo: {
-            owner: process.env.NEXT_PUBLIC_KEYSTATIC_REPO_OWNER || 'owner',
-            name: process.env.NEXT_PUBLIC_KEYSTATIC_REPO_NAME || 'repo',
+            owner: process.env.NEXT_PUBLIC_KEYSTATIC_REPO_OWNER || 'Zawahir1',
+            name: process.env.NEXT_PUBLIC_KEYSTATIC_REPO_NAME || 'agent-ondemand',
           },
         }
       : {
