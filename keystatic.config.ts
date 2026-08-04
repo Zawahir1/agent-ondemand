@@ -59,11 +59,34 @@ export default config({
           directory: 'public/images/blog',
           publicPath: '/images/blog',
         }),
+        keyTakeaways: fields.array(
+          fields.text({ label: 'Takeaway' }),
+          {
+            label: 'Key Takeaways',
+            itemLabel: (item) => item.value,
+          }
+        ),
+        faqs: fields.array(
+          fields.object({
+            question: fields.text({ label: 'Question' }),
+            answer: fields.text({ label: 'Answer', multiline: true }),
+          }),
+          {
+            label: 'Frequently Asked Questions (FAQs)',
+            itemLabel: (item) => item.fields.question.value || 'New FAQ',
+          }
+        ),
+        schemaOverride: fields.text({
+          label: 'Custom JSON-LD Schema Override',
+          description: 'Paste your custom JSON-LD schema blocks here (FAQPage, Article, etc.) to override defaults.',
+          multiline: true,
+        }),
         content: fields.document({
           label: 'Content',
           formatting: true,
           dividers: true,
           links: true,
+          tables: true,
           images: {
             directory: 'public/images/blog',
             publicPath: '/images/blog',
