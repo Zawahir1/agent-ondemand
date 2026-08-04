@@ -25,6 +25,7 @@ interface BlogPostData {
   keyTakeaways: readonly string[];
   faqs: readonly FAQItem[];
   schemaOverride?: string;
+  translations: Record<string, string>;
 }
 
 interface BlogContentClientProps {
@@ -41,8 +42,17 @@ const slugify = (text: string) =>
     .replace(/-+/g, '-');
 
 export default function BlogContentClient({ post, content, slug }: BlogContentClientProps) {
-  const { t } = useLanguage();
+  const { t, registerBlogTranslations } = useLanguage();
   const [activeHeading, setActiveHeading] = useState<string>("");
+
+  useEffect(() => {
+    if (post.translations) {
+      registerBlogTranslations(post.translations as any);
+    }
+    return () => {
+      registerBlogTranslations(null);
+    };
+  }, [post.translations, registerBlogTranslations]);
 
   // Extract H2 headings from the content AST nodes for the ToC
   const headings = useMemo(() => {

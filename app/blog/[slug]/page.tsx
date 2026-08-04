@@ -47,6 +47,18 @@ export default async function BlogPostPage({ params }: Props) {
 
   const contentNodes = await post.content();
 
+  const translationMap: Record<string, string> = {};
+  if (post.language) {
+    translationMap[post.language] = `/blog/${slug}`;
+  }
+  if (post.translations) {
+    post.translations.forEach((t) => {
+      if (t.lang && t.linkedPost) {
+        translationMap[t.lang] = `/blog/${t.linkedPost}`;
+      }
+    });
+  }
+
   const postData = {
     title: post.title,
     publishedAt: post.publishedAt || new Date().toISOString().split('T')[0],
@@ -58,6 +70,7 @@ export default async function BlogPostPage({ params }: Props) {
     keyTakeaways: post.keyTakeaways,
     faqs: post.faqs,
     schemaOverride: post.schemaOverride,
+    translations: translationMap,
   };
 
   return (

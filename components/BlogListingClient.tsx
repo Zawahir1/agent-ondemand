@@ -17,6 +17,7 @@ interface BlogPost {
     metaTitle: string;
     metaDescription: string;
     ogImage: string | null;
+    language: string;
   };
 }
 
@@ -25,16 +26,26 @@ interface BlogListingClientProps {
 }
 
 export default function BlogListingClient({ posts }: BlogListingClientProps) {
-  const { t } = useLanguage();
+  const { t, language: currentLang } = useLanguage();
 
-  // Sort posts by date from latest to oldest
-  const sortedPosts = useMemo(() => {
-    return [...posts].sort((a, b) => {
+  // Filter posts by active language, fallback to English if none exist for active language
+  const { filteredPosts, isFallback } = useMemo(() => {
+    let list = posts.filter((post) => post.entry.language === currentLang);
+    let fallback = false;
+
+    if (list.length === 0 && currentLang !== "en") {
+      list = posts.filter((post) => post.entry.language === "en");
+      fallback = true;
+    }
+
+    const sorted = [...list].sort((a, b) => {
       const dateA = new Date(a.entry.publishedAt).getTime();
       const dateB = new Date(b.entry.publishedAt).getTime();
       return dateB - dateA;
     });
-  }, [posts]);
+
+    return { filteredPosts: sorted, isFallback: fallback };
+  }, [posts, currentLang]);
 
   // Generate metadata JSON-LD dynamically for the blog listing page
   const listSchema = {
@@ -50,7 +61,7 @@ export default function BlogListingClient({ posts }: BlogListingClientProps) {
         "url": "https://www.agent-ondemand.com/images/agent.png"
       }
     },
-    "blogPost": sortedPosts.map((post) => ({
+    "blogPost": filteredPosts.map((post) => ({
       "@type": "BlogPosting",
       "headline": post.entry.title,
       "description": post.entry.description,
@@ -109,14 +120,20 @@ export default function BlogListingClient({ posts }: BlogListingClientProps) {
           </p>
         </div>
 
+        {isFallback && (
+          <div className="max-w-xl mx-auto mb-10 bg-[#00ff66]/10 border border-[#00ff66]/20 p-4 rounded-xl text-center text-sm text-[#fbf9f7]/85 font-helvetica backdrop-blur-md">
+            Showing articles in English as there are no translations available in your selected language.
+          </div>
+        )}
+
         {/* Blog Post Grid: 3 columns on large screen, 1 on mobile */}
-        {sortedPosts.length === 0 ? (
+        {filteredPosts.length === 0 ? (
           <div className="text-center text-[#fbf9f7]/40 py-20 font-helvetica">
             No articles published yet. Stay tuned!
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {sortedPosts.map((post) => {
+            {filteredPosts.map((post) => {
               const imageSrc = post.entry.ogImage || "/images/homepage-hero-graphic.jpg";
               const formattedDate = new Date(post.entry.publishedAt).toLocaleDateString(undefined, {
                 year: 'numeric',

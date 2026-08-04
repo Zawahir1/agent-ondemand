@@ -20,6 +20,7 @@ export default async function BlogPage() {
       metaTitle: post.entry.metaTitle,
       metaDescription: post.entry.metaDescription,
       ogImage: post.entry.ogImage,
+      language: post.entry.language,
     },
   }));
 

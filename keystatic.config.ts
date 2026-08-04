@@ -59,6 +59,40 @@ export default config({
           directory: 'public/images/blog',
           publicPath: '/images/blog',
         }),
+        language: fields.select({
+          label: 'Post Language',
+          options: [
+            { label: 'English', value: 'en' },
+            { label: 'Italiano', value: 'it' },
+            { label: 'Español', value: 'es' },
+            { label: 'Français', value: 'fr' },
+            { label: 'Deutsch', value: 'de' },
+          ],
+          defaultValue: 'en',
+        }),
+        translations: fields.array(
+          fields.object({
+            lang: fields.select({
+              label: 'Language',
+              options: [
+                { label: 'English', value: 'en' },
+                { label: 'Italiano', value: 'it' },
+                { label: 'Español', value: 'es' },
+                { label: 'Français', value: 'fr' },
+                { label: 'Deutsch', value: 'de' },
+              ],
+              defaultValue: 'en',
+            }),
+            linkedPost: fields.relationship({
+              label: 'Linked Post Translation',
+              collection: 'posts',
+            }),
+          }),
+          {
+            label: 'Translated Versions of this Post',
+            itemLabel: (item) => `${item.fields.lang.value}: ${item.fields.linkedPost.value || '(select post)'}`,
+          }
+        ),
         keyTakeaways: fields.array(
           fields.text({ label: 'Takeaway' }),
           {
