@@ -1,0 +1,197 @@
+@import "tailwindcss";
+
+/* ─── Intrinseca — Light (300) ─────────────────────────────────────── */
+@font-face {
+  font-family: 'Intrinseca';
+  src: url('/fonts/Intrinseca-Light.woff2') format('woff2'),
+       url('/fonts/Intrinseca-Light.woff') format('woff'),
+       url('/fonts/Intrinseca-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Intrinseca';
+  src: url('/fonts/Intrinseca-LightItalic.woff2') format('woff2'),
+       url('/fonts/Intrinseca-LightItalic.woff') format('woff'),
+       url('/fonts/Intrinseca-LightItalic.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ─── Intrinseca — Book (400 / normal) ─────────────────────────────── */
+@font-face {
+  font-family: 'Intrinseca';
+  src: url('/fonts/Intrinseca-Book.woff2') format('woff2'),
+       url('/fonts/Intrinseca-Book.woff') format('woff'),
+       url('/fonts/Intrinseca-Book.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Intrinseca';
+  src: url('/fonts/Intrinseca-BookItalic.woff2') format('woff2'),
+       url('/fonts/Intrinseca-BookItalic.woff') format('woff'),
+       url('/fonts/Intrinseca-BookItalic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ─── Intrinseca — Regular (mapped to 450 so Book stays at 400) ────── */
+@font-face {
+  font-family: 'Intrinseca';
+  src: url('/fonts/Intrinseca-Regular.woff2') format('woff2'),
+       url('/fonts/Intrinseca-Regular.woff') format('woff'),
+       url('/fonts/Intrinseca-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Intrinseca';
+  src: url('/fonts/Intrinseca-RegularItalic.woff2') format('woff2'),
+       url('/fonts/Intrinseca-RegularItalic.woff') format('woff'),
+       url('/fonts/Intrinseca-RegularItalic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ─── Intrinseca — Medium (500) ─────────────────────────────────────── */
+@font-face {
+  font-family: 'Intrinseca';
+  src: url('/fonts/Intrinseca-Medium.woff2') format('woff2'),
+       url('/fonts/Intrinseca-Medium.woff') format('woff'),
+       url('/fonts/Intrinseca-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Intrinseca';
+  src: url('/fonts/Intrinseca-MediumItalic.woff2') format('woff2'),
+       url('/fonts/Intrinseca-MediumItalic.woff') format('woff'),
+       url('/fonts/Intrinseca-MediumItalic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ─── Intrinseca — SemiBold (600) ───────────────────────────────────── */
+@font-face {
+  font-family: 'Intrinseca';
+  src: url('/fonts/Intrinseca-SemiBold.woff2') format('woff2'),
+       url('/fonts/Intrinseca-SemiBold.woff') format('woff'),
+       url('/fonts/Intrinseca-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Intrinseca';
+  src: url('/fonts/Intrinseca-SemiBoldItalic.woff2') format('woff2'),
+       url('/fonts/Intrinseca-SemiBoldItalic.woff') format('woff'),
+       url('/fonts/Intrinseca-SemiBoldItalic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ─── Intrinseca — Bold (700) ───────────────────────────────────────── */
+@font-face {
+  font-family: 'Intrinseca';
+  src: url('/fonts/Intrinseca-Bold.woff2') format('woff2'),
+       url('/fonts/Intrinseca-Bold.woff') format('woff'),
+       url('/fonts/Intrinseca-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Intrinseca';
+  src: url('/fonts/Intrinseca-BoldItalic.woff2') format('woff2'),
+       url('/fonts/Intrinseca-BoldItalic.woff') format('woff'),
+       url('/fonts/Intrinseca-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ─── Design tokens ─────────────────────────────────────────────────── */
+:root {
+  --background: #000000;
+  --foreground: #fbf9f7;
+  --gradient-hero: radial-gradient(ellipse 80% 50% at 50% 40%, rgba(0, 255, 102, 0.08) 0%, transparent 70%), #000000;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-helvetica: Helvetica, Arial, sans-serif;
+  --font-intrinseca: 'Intrinseca', Helvetica, Arial, sans-serif;
+}
+
+
+body {
+  background-color: #000000;
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.04) 0%, transparent 55%),
+    radial-gradient(circle at 85% 85%, rgba(16, 185, 129, 0.03) 0%, transparent 55%),
+    radial-gradient(circle at 50% 50%, #01120a 0%, #000000 100%);
+  background-attachment: fixed;
+  color: var(--foreground);
+  font-family: var(--font-helvetica);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Intrinseca', Helvetica, Arial, sans-serif;
+}
+
+/* ─── Animated Gradient Text ─────────────────────────────────────────
+   Gradient is 300% wide. The colorful band lives in the center third.
+   At position  0%: left third shown  → dark/static look
+   At position 50%: center third shown → colorful sweep visible
+   At position  0%: back to dark (alternate reverses it smoothly)
+
+   Keyframe holds at 0% for 75% of the half-cycle (~3 s at 4 s duration),
+   then sweeps to 50% in the final 25% (~1 s). `alternate` sends it back.
+   Full perceived cycle: 3 s pause → 1 s sweep → 3 s pause → 1 s sweep = 8 s
+────────────────────────────────────────────────────────────────────── */
+@keyframes gradient-sweep {
+  0%, 75% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 50% 50%;
+  }
+}
+
+.animated-gradient-text {
+  /* The gradient: white → #ff0084 burst → white, spanning the full 300% */
+  background-image: linear-gradient(
+    90deg,
+    rgb(251, 249, 247)  0%,
+    rgb(251, 249, 247) 20%,
+    rgb(180, 0, 80)    26%,
+    rgb(255, 0, 132)   30%,
+    rgb(255, 120, 180) 36%,
+    rgb(255, 0, 132)   43%,
+    rgb(255, 180, 210) 50%,
+    rgb(255, 0, 132)   57%,
+    rgb(200, 0, 100)   64%,
+    rgb(255, 0, 132)   70%,
+    rgb(251, 249, 247) 76%,
+    rgb(251, 249, 247) 100%
+  );
+  background-size: 300% 100%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+  animation: gradient-sweep 4s ease-in-out infinite alternate;
+}
