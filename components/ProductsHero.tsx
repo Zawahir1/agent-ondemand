@@ -23,8 +23,8 @@ export default function ProductsHero({
     description,
     detailParagraphs,
     bulletPoints,
-    videoUrl = "https://www.youtube.com/embed/v5QKa9z4RWI?autoplay=1",
-    videoThumbnail = "https://img.youtube.com/vi/v5QKa9z4RWI/maxresdefault.jpg"
+    videoUrl = "https://www.youtube.com/embed/2bojIMD7uYo?autoplay=1",
+    videoThumbnail = "https://img.youtube.com/vi/2bojIMD7uYo/maxresdefault.jpg"
 }: ProductsHeroProps) {
     const [isPlayingInline, setIsPlayingInline] = useState(false);
 

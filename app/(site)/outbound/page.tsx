@@ -661,6 +661,8 @@ export default function OutboundPage() {
                     t("outbound.hero.bullet2"),
                     t("outbound.hero.bullet3")
                 ]}
+                videoUrl="https://www.youtube.com/embed/kxfIaV5T_FY?autoplay=1"
+                videoThumbnail="https://img.youtube.com/vi/kxfIaV5T_FY/maxresdefault.jpg"
             />
             {/* ── MEET PRODUCT SECTION ── */}
             <MeetProduct

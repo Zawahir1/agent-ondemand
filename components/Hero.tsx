@@ -98,7 +98,7 @@ export default function Hero() {
                     <div className="relative w-full aspect-video rounded-[1.5rem] overflow-hidden bg-gray-900">
                         {isPlayingInline ? (
                             <iframe
-                                src="https://www.youtube.com/embed/v5QKa9z4RWI?autoplay=1"
+                                src="https://www.youtube.com/embed/2bojIMD7uYo?autoplay=1"
                                 title="Ava Video Demo"
                                 frameBorder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -110,7 +110,7 @@ export default function Hero() {
                                 {/* YouTube video thumbnail as background */}
                                 <div
                                     className="absolute inset-0 bg-cover bg-center opacity-90 transition-transform duration-700 group-hover:scale-[1.01]"
-                                    style={{ backgroundImage: "url('https://img.youtube.com/vi/v5QKa9z4RWI/maxresdefault.jpg')" }}
+                                    style={{ backgroundImage: "url('https://img.youtube.com/vi/2bojIMD7uYo/maxresdefault.jpg')" }}
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                                 <div className="absolute inset-0 flex items-center justify-center">
