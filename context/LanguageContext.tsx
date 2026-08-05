@@ -3,8 +3,9 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { translations, TranslationKey } from "@/locales/translations";
 import { useRouter, usePathname } from "next/navigation";
+import { LOCALES, Locale } from "@/lib/i18n";
 
-export type Language = "en" | "it" | "es" | "fr" | "de";
+export type Language = Locale;
 
 interface LanguageContextType {
   language: Language;
@@ -16,22 +17,23 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguageState] = useState<Language>("en");
+interface LanguageProviderProps {
+  children: React.ReactNode;
+  /** Initial locale from the [locale] route segment (server-side) */
+  initialLocale: Language;
+}
+
+export function LanguageProvider({ children, initialLocale }: LanguageProviderProps) {
+  const [language, setLanguageState] = useState<Language>(initialLocale);
   const [blogTranslations, setBlogTranslations] = useState<Record<Language, string> | null>(null);
-  
+
   const router = useRouter();
   const pathname = usePathname();
 
-  // Load language preference from localStorage on mount
+  // Sync html lang attribute with locale
   useEffect(() => {
-    const savedLang = localStorage.getItem("language") as Language;
-    if (savedLang && ["en", "it", "es", "fr", "de"].includes(savedLang)) {
-      requestAnimationFrame(() => {
-        setLanguageState(savedLang);
-      });
-    }
-  }, []);
+    document.documentElement.lang = language;
+  }, [language]);
 
   const registerBlogTranslations = (translations: Record<Language, string> | null) => {
     setBlogTranslations(translations);
@@ -39,21 +41,33 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
-    localStorage.setItem("language", lang);
 
-    // If we are currently reading an article, handle translation mapping redirect
-    if (pathname && pathname.startsWith("/blog/")) {
-      if (blogTranslations && blogTranslations[lang]) {
-        router.push(blogTranslations[lang]);
-      } else {
-        // Fallback: Redirect to blog index if no translation is available
-        router.push("/blog");
+    // Update cookie so middleware remembers preference
+    document.cookie = `NEXT_LOCALE=${lang}; max-age=${60 * 60 * 24 * 365}; path=/; samesite=lax`;
+
+    if (pathname) {
+      // Check if on a blog article with a translation mapping
+      const blogSlugMatch = pathname.match(/^\/(en|it|es|fr|de)\/blog\/(.+)$/);
+      if (blogSlugMatch) {
+        if (blogTranslations && blogTranslations[lang]) {
+          // Navigate to the translated article
+          router.push(blogTranslations[lang]);
+        } else {
+          // No translation available — go to blog listing in new locale
+          router.push(`/${lang}/blog`);
+        }
+        return;
       }
+
+      // For all other pages: replace the locale segment in the current URL
+      const pathWithoutLocale = pathname.replace(/^\/(en|it|es|fr|de)/, "") || "/";
+      router.push(`/${lang}${pathWithoutLocale}`);
     }
   };
 
   const t = (key: TranslationKey, fallback?: string): string => {
-    const translation = (translations[language] as Record<string, string>)[key] || (translations["en"] as Record<string, string>)[key];
+    const translation = (translations[language] as Record<string, string>)[key]
+      || (translations["en"] as Record<string, string>)[key];
     return translation || fallback || key;
   };
 

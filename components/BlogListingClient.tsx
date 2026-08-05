@@ -23,17 +23,20 @@ interface BlogPost {
 
 interface BlogListingClientProps {
   posts: BlogPost[];
+  currentLocale: string;
 }
 
-export default function BlogListingClient({ posts }: BlogListingClientProps) {
-  const { t, language: currentLang } = useLanguage();
+export default function BlogListingClient({ posts, currentLocale }: BlogListingClientProps) {
+  const { t, language: contextLang } = useLanguage();
+  // Use the locale from URL params (server-authoritative) or fall back to context
+  const effectiveLang = currentLocale || contextLang;
 
-  // Filter posts by active language, fallback to English if none exist for active language
+  // Filter posts by active language, fallback to English if none exist
   const { filteredPosts, isFallback } = useMemo(() => {
-    let list = posts.filter((post) => post.entry.language === currentLang);
+    let list = posts.filter((post) => post.entry.language === effectiveLang);
     let fallback = false;
 
-    if (list.length === 0 && currentLang !== "en") {
+    if (list.length === 0 && effectiveLang !== "en") {
       list = posts.filter((post) => post.entry.language === "en");
       fallback = true;
     }
@@ -45,7 +48,7 @@ export default function BlogListingClient({ posts }: BlogListingClientProps) {
     });
 
     return { filteredPosts: sorted, isFallback: fallback };
-  }, [posts, currentLang]);
+  }, [posts, effectiveLang]);
 
   // Generate metadata JSON-LD dynamically for the blog listing page
   const listSchema = {
@@ -146,7 +149,7 @@ export default function BlogListingClient({ posts }: BlogListingClientProps) {
                   key={post.slug}
                   className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[1.5rem] overflow-hidden flex flex-col justify-between transition-all duration-300 hover:border-[#00ff66]/40 hover:shadow-[0_10px_30px_rgba(0,255,102,0.1)] group"
                 >
-                  <Link href={`/blog/${post.slug}`} className="block overflow-hidden relative aspect-[16/10]">
+                  <Link href={`/${effectiveLang}/blog/${post.slug}`} className="block overflow-hidden relative aspect-[16/10]">
                     <img
                       src={imageSrc}
                       alt={post.entry.title}
@@ -166,7 +169,7 @@ export default function BlogListingClient({ posts }: BlogListingClientProps) {
 
                       {/* Blog Post H1 - visually truncated but fully in DOM for SEO */}
                       <h2 className="text-xl md:text-2xl font-intrinseca text-[#fbf9f7] mb-3 group-hover:text-[#00ff66] transition-colors duration-200">
-                        <Link href={`/blog/${post.slug}`} className="line-clamp-2">
+                        <Link href={`/${effectiveLang}/blog/${post.slug}`} className="line-clamp-2">
                           {post.entry.title}
                         </Link>
                       </h2>
@@ -178,7 +181,7 @@ export default function BlogListingClient({ posts }: BlogListingClientProps) {
                     </div>
 
                     <Link
-                      href={`/blog/${post.slug}`}
+                      href={`/${effectiveLang}/blog/${post.slug}`}
                       className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#00ff66] hover:text-[#00dd55] transition-colors duration-200"
                     >
                       Read Article <span className="text-xs">→</span>

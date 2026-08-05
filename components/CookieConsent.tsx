@@ -6,9 +6,12 @@ import { TranslationKey } from "@/locales/translations";
 import { motion, AnimatePresence } from "framer-motion";
 import { ShieldCheck, Settings, X } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function CookieConsent() {
   const { t } = useLanguage();
+  const pathname = usePathname();
+  const currentLocale = pathname?.split("/")[1] || "en";
   const [visible, setVisible] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [analytics, setAnalytics] = useState(true);
@@ -80,7 +83,7 @@ export default function CookieConsent() {
                 <p className="text-xs text-[#fbf9f7]/65 leading-relaxed mb-6">
                   {t("cookie.banner.text" as TranslationKey)}{" "}
                   <Link
-                    href="/cookies"
+                    href={`/${currentLocale}/cookies`}
                     className="text-[#00ff66] underline hover:text-[#33ff85] transition-colors"
                   >
                     {t("cookies.title")}

@@ -8,6 +8,7 @@ import { DocumentRenderer } from "@keystatic/core/renderer";
 import { useMemo, useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, Clock, User, Check, ChevronDown } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 interface FAQItem {
   question: string;
@@ -44,6 +45,8 @@ const slugify = (text: string) =>
 export default function BlogContentClient({ post, content, slug }: BlogContentClientProps) {
   const { t, registerBlogTranslations } = useLanguage();
   const [activeHeading, setActiveHeading] = useState<string>("");
+  const pathname = usePathname();
+  const currentLocale = pathname?.split("/")[1] || "en";
 
   useEffect(() => {
     if (post.translations) {
@@ -285,7 +288,7 @@ export default function BlogContentClient({ post, content, slug }: BlogContentCl
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-36 pb-24 w-full flex-grow">
         {/* Back Link */}
         <Link
-          href="/blog"
+          href={`/${currentLocale}/blog`}
           className="inline-flex items-center gap-2 text-sm text-[#00ff66] hover:text-[#00dd55] transition-colors mb-8 font-semibold font-helvetica"
         >
           <ArrowLeft className="w-4 h-4" /> Back to Blog

@@ -60,6 +60,7 @@ const languages = [
   { code: "de" as const, name: "Deutsch", abbrev: "DE", flag: <DEFlag /> },
 ];
 
+// Base hrefs without locale prefix — locale is prepended at render time
 const navItems = [
   {
     name: "Product",
@@ -99,6 +100,12 @@ export default function Navbar() {
 
   const activeLang = languages.find((l) => l.code === language) || languages[0];
 
+  // Extract locale from current pathname (e.g. /en/pricing → 'en')
+  const currentLocale = pathname?.split("/")[1] || "en";
+
+  // Build a locale-prefixed href
+  const localePath = (path: string) => `/${currentLocale}${path}`;
+
   return (
     <>
       <nav
@@ -111,10 +118,10 @@ export default function Navbar() {
       <div className="mx-auto px-6 py-4 flex items-center justify-between">
 
         {/* Logo */}
-        <Link href="/" className="flex-shrink-0 flex items-center">
-          <img 
-            src="/images/Agent on demand.png" 
-            alt="Agent On Demand" 
+        <Link href={localePath("")} className="flex-shrink-0 flex items-center">
+          <img
+            src="/images/Agent on demand.png"
+            alt="Agent On Demand"
             className="h-8 md:h-9 w-auto object-contain"
           />
         </Link>
@@ -138,9 +145,9 @@ export default function Navbar() {
                   </button>
                 ) : (
                   <Link
-                    href={item.href!}
+                    href={localePath(item.href!)}
                     className={`text-sm font-medium transition-colors ${
-                      pathname === item.href
+                      pathname?.endsWith(item.href!) || pathname === `/${currentLocale}${item.href}`
                         ? "text-[#00ff66]"
                         : "text-[#fbf9f7]/70 hover:text-[#fbf9f7]"
                     }`}
@@ -167,7 +174,7 @@ export default function Navbar() {
                           return (
                             <Link
                               key={dropItem.label}
-                              href={dropItem.href}
+                              href={localePath(dropItem.href)}
                               onClick={() => setActiveDropdown(null)}
                               className="flex items-start gap-3 p-3 rounded-xl hover:bg-emerald-950/30 transition-colors group"
                             >
@@ -217,7 +224,7 @@ export default function Navbar() {
                       <button
                         key={lang.code}
                         onClick={() => {
-                          setLanguage(lang.code);
+                          setLanguage(lang.code); // navigates to new locale URL
                           setLangDropdownOpen(false);
                         }}
                         className={`flex items-center gap-2.5 w-full text-left px-2.5 py-2 rounded-lg text-xs font-semibold transition-colors hover:bg-emerald-950/40 hover:text-[#00ff66] cursor-pointer ${

@@ -3,38 +3,42 @@
 import { FaTwitter, FaLinkedin, FaYoutube, FaInstagram } from "react-icons/fa";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
     const { t } = useLanguage();
+    const pathname = usePathname();
+    const currentLocale = pathname?.split("/")[1] || "en";
+    const lp = (path: string) => `/${currentLocale}${path}`;
 
     const sections = [
         {
             title: "Products",
             items: [
-                { label: "AI Receptionist", href: "/receptionist" },
-                { label: "AI Outbound Calling", href: "/outbound" },
-                { label: "Real Estate AI Agent", href: "/real-estate" },
-                { label: "Automotive AI Agent", href: "/automotive" },
-                { label: "Gym & Fitness AI Agent", href: "/gym" },
+                { label: "AI Receptionist", href: lp("/receptionist") },
+                { label: "AI Outbound Calling", href: lp("/outbound") },
+                { label: "Real Estate AI Agent", href: lp("/real-estate") },
+                { label: "Automotive AI Agent", href: lp("/automotive") },
+                { label: "Gym & Fitness AI Agent", href: lp("/gym") },
             ],
         },
         {
             title: "Company",
             items: [
-                { label: "Pricing", href: "/pricing" },
-                { label: "Blog", href: "/blog" },
-                { label: "Contact Us", href: "/contact" },
+                { label: "Pricing", href: lp("/pricing") },
+                { label: "Blog", href: lp("/blog") },
+                { label: "Contact Us", href: lp("/contact") },
             ],
         },
         {
             title: "Legal",
             items: [
-                { label: "Terms of Service", href: "/terms" },
-                { label: "Privacy Policy", href: "/privacy" },
-                { label: "Data Processing Agreement", href: "/dpa" },
-                { label: "Acceptable Use Policy", href: "/aup" },
-                { label: "Disclaimer", href: "/disclaimer" },
-                { label: "Cookie Policy", href: "/cookies" },
+                { label: "Terms of Service", href: lp("/terms") },
+                { label: "Privacy Policy", href: lp("/privacy") },
+                { label: "Data Processing Agreement", href: lp("/dpa") },
+                { label: "Acceptable Use Policy", href: lp("/aup") },
+                { label: "Disclaimer", href: lp("/disclaimer") },
+                { label: "Cookie Policy", href: lp("/cookies") },
             ],
         },
     ];
@@ -51,7 +55,7 @@ export default function Footer() {
 
                     {/* Brand column */}
                     <div className="col-span-2 md:col-span-1">
-                        <Link href="/" className="inline-block mb-6">
+                        <Link href={lp("")} className="inline-block mb-6">
                             <img
                                 src="/images/Agent on demand.png"
                                 alt="Agent On Demand"
@@ -105,7 +109,7 @@ export default function Footer() {
                     <span className="text-xs text-[#fbf9f7]/40">
                         © {new Date().getFullYear()} Agent On Demand. All rights reserved.
                     </span>
-                    <Link href="/contact" className="text-xs text-[#fbf9f7]/40 hover:text-[#00ff66] transition-colors">
+                    <Link href={lp("/contact")} className="text-xs text-[#fbf9f7]/40 hover:text-[#00ff66] transition-colors">
                         {t("footer.socials.optOut")}
                     </Link>
                 </div>
