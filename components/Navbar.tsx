@@ -78,6 +78,11 @@ const navItems = [
     href: "/pricing",
   },
   {
+    name: "Blog",
+    hasDropdown: false,
+    href: "/blog",
+  },
+  {
     name: "BookDemo",
     hasDropdown: false,
     href: "/contact",
