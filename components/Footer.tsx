@@ -1,78 +1,96 @@
 "use client";
 
-import { Triangle } from "lucide-react";
-
-// Grab your brand icons from FontAwesome (fa) or SimpleIcons (si) via react-icons
 import { FaTwitter, FaLinkedin, FaYoutube, FaInstagram } from "react-icons/fa";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
-import { TranslationKey } from "@/locales/translations";
 
 export default function Footer() {
     const { t } = useLanguage();
 
     const sections = [
         {
-            title: t("footer.links.solutions"),
+            title: "Products",
             items: [
-                { label: t("footer.links.solutions.startups"), href: "#" },
-                { label: t("footer.links.solutions.smbs"), href: "#" },
-                { label: t("footer.links.solutions.enterprise"), href: "#" }
-            ]
+                { label: "AI Receptionist", href: "/receptionist" },
+                { label: "AI Outbound Calling", href: "/outbound" },
+                { label: "Real Estate AI Agent", href: "/real-estate" },
+                { label: "Automotive AI Agent", href: "/automotive" },
+                { label: "Gym & Fitness AI Agent", href: "/gym" },
+            ],
         },
         {
-            title: t("footer.links.resources"),
+            title: "Company",
             items: [
-                { label: t("footer.links.resources.community"), href: "#" },
-                { label: t("footer.links.resources.university"), href: "#" },
-                { label: t("footer.links.resources.helpCenter"), href: "/contact" }
-            ]
+                { label: "Pricing", href: "/pricing" },
+                { label: "Blog", href: "/blog" },
+                { label: "Contact Us", href: "/contact" },
+            ],
         },
         {
-            title: t("footer.links.company"),
+            title: "Legal",
             items: [
-                { label: t("footer.links.company.contact"), href: "/contact" },
-                { label: t("footer.links.company.careers"), href: "#" },
-                { label: t("footer.links.company.newsroom"), href: "#" }
-            ]
+                { label: "Terms of Service", href: "/terms" },
+                { label: "Privacy Policy", href: "/privacy" },
+                { label: "Data Processing Agreement", href: "/dpa" },
+                { label: "Acceptable Use Policy", href: "/aup" },
+                { label: "Disclaimer", href: "/disclaimer" },
+                { label: "Cookie Policy", href: "/cookies" },
+            ],
         },
-        {
-            title: t("footer.links.blog"),
-            items: [
-                { label: t("footer.links.blog.post1"), href: "#" },
-                { label: t("footer.links.blog.post2"), href: "#" },
-                { label: t("footer.links.blog.post3"), href: "#" }
-            ]
-        },
-        {
-            title: t("footer.links.legal"),
-            items: [
-                { label: t("footer.links.legal.terms"), href: "/terms" },
-                { label: t("footer.links.legal.privacy"), href: "/privacy" },
-                { label: t("footer.links.legal.dpa"), href: "/dpa" },
-                { label: t("footer.links.legal.aup" as TranslationKey), href: "/aup" },
-                { label: t("footer.links.legal.disclaimer" as TranslationKey), href: "/disclaimer" },
-                { label: t("footer.links.legal.cookies"), href: "/cookies" }
-            ]
-        }
     ];
 
     return (
         <footer
-            style={{ background: 'linear-gradient(135deg, #041c0e 0%, #010a05 100%)' }}
+            style={{ background: "linear-gradient(135deg, #041c0e 0%, #010a05 100%)" }}
             className="text-[#fbf9f7] pt-24 pb-12 mb-4 px-6 rounded-3xl mt-[-2rem] relative z-20 overflow-hidden border border-[#00ff66]/10 shadow-[0_12px_40px_rgba(0,0,0,0.8)]"
         >
             <div className="max-w-7xl mx-auto relative z-10">
 
                 {/* Top Grid */}
-                <div className="grid grid-cols-2 md:grid-cols-5 gap-12 mb-20 relative z-20">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-20 relative z-20">
+
+                    {/* Brand column */}
+                    <div className="col-span-2 md:col-span-1">
+                        <Link href="/" className="inline-block mb-6">
+                            <img
+                                src="/images/Agent on demand.png"
+                                alt="Agent On Demand"
+                                className="h-8 w-auto object-contain"
+                                onError={(e) => {
+                                    (e.target as HTMLImageElement).style.display = "none";
+                                }}
+                            />
+                        </Link>
+                        <p className="text-sm text-[#fbf9f7]/50 leading-relaxed max-w-[220px]">
+                            AI call agents that answer every business call, 24/7, in 30+ languages.
+                        </p>
+                        <div className="flex gap-4 mt-6 text-[#fbf9f7]/50">
+                            <a href="https://www.linkedin.com/company/agent-on-demand" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                                <FaLinkedin className="w-5 h-5 hover:text-[#00ff66] cursor-pointer transition-colors" />
+                            </a>
+                            <a href="https://www.instagram.com/agenton.demand" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                                <FaInstagram className="w-5 h-5 hover:text-[#00ff66] cursor-pointer transition-colors" />
+                            </a>
+                            <a href="https://x.com/agentOnDemand" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter">
+                                <FaTwitter className="w-5 h-5 hover:text-[#00ff66] cursor-pointer transition-colors" />
+                            </a>
+                            <a href="https://www.youtube.com/@agentOnDemand" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                                <FaYoutube className="w-5 h-5 hover:text-[#00ff66] cursor-pointer transition-colors" />
+                            </a>
+                        </div>
+                    </div>
+
+                    {/* Link sections */}
                     {sections.map((section) => (
                         <div key={section.title}>
                             <h4 className="font-bold mb-6 text-[#fbf9f7]">{section.title}</h4>
                             <ul className="space-y-4">
                                 {section.items.map((item) => (
                                     <li key={item.label}>
-                                        <Link href={item.href} className="text-sm text-[#fbf9f7]/60 hover:text-[#00ff66] transition-colors">
+                                        <Link
+                                            href={item.href}
+                                            className="text-sm text-[#fbf9f7]/60 hover:text-[#00ff66] transition-colors"
+                                        >
                                             {item.label}
                                         </Link>
                                     </li>
@@ -83,60 +101,32 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom Row */}
-                <div className="grid grid-cols-1 md:grid-cols-3 items-center justify-between w-full relative z-20 gap-8">
-
-                    {/* Left Column: Socials and opt-out link */}
-                    <div className="flex flex-col items-center md:items-start gap-4 border-t border-emerald-950/40 pt-8 w-full">
-                        <div className="flex gap-5 text-[#fbf9f7]/60">
-                            <FaLinkedin className="w-5 h-5 hover:text-[#00ff66] cursor-pointer transition-colors" />
-                            <FaInstagram className="w-5 h-5 hover:text-[#00ff66] cursor-pointer transition-colors" />
-                            <FaTwitter className="w-5 h-5 hover:text-[#00ff66] cursor-pointer transition-colors" />
-                            <FaYoutube className="w-5 h-5 hover:text-[#00ff66] cursor-pointer transition-colors" />
-                        </div>
-                        <Link href="#" className="text-xs text-[#fbf9f7]/40 hover:text-[#00ff66] transition-colors">
-                            {t("footer.socials.optOut")}
-                        </Link>
-                    </div>
-
-                    {/* Center Column: Animated Ripple Rings and Centered White Logo Container */}
-                    <div className="flex items-center justify-center relative w-full min-h-[140px] overflow-visible">
-                        {/* Ripple animation circles (Slow, ultra-faint ambient waves) */}
-                        <div className="absolute rounded-full border-[0.5px] border-[#00ff66]/10 ripple-animation pointer-events-none z-0" style={{ width: 80, height: 80, animationDuration: '15s', animationDelay: '0s', willChange: 'transform, opacity' }}></div>
-                        <div className="absolute rounded-full border-[0.5px] border-[#00ff66]/10 ripple-animation pointer-events-none z-0" style={{ width: 80, height: 80, animationDuration: '15s', animationDelay: '1.5s', willChange: 'transform, opacity' }}></div>
-                        <div className="absolute rounded-full border-[0.5px] border-[#00ff66]/10 ripple-animation pointer-events-none z-0" style={{ width: 80, height: 80, animationDuration: '15s', animationDelay: '3s', willChange: 'transform, opacity' }}></div>
-                        <div className="absolute rounded-full border-[0.5px] border-[#00ff66]/10 ripple-animation pointer-events-none z-0" style={{ width: 80, height: 80, animationDuration: '15s', animationDelay: '4.5s', willChange: 'transform, opacity' }}></div>
-                        <div className="absolute rounded-full border-[0.5px] border-[#00ff66]/10 ripple-animation pointer-events-none z-0" style={{ width: 80, height: 80, animationDuration: '15s', animationDelay: '6s', willChange: 'transform, opacity' }}></div>
-
-                        {/* Circular Logo Container */}
-                        <div className="w-20 h-20 bg-emerald-950/60 backdrop-blur-lg rounded-full border border-[#00ff66]/20 flex items-center justify-center relative z-30 shadow-[0_0_30px_rgba(0,255,102,0.35)] hover:border-[#00ff66]/40 hover:shadow-[0_0_40px_rgba(0,255,102,0.5)] hover:scale-105 transition-all duration-300">
-                            <Triangle className="w-9 h-9 text-[#00ff66] fill-[#00ff66] rotate-180" />
-                        </div>
-                    </div>
-
-                    {/* Right Column: Copyright */}
-                    <div className="flex flex-col items-center md:items-end justify-center border-t border-emerald-950/40 pt-8 w-full text-center md:text-right">
-                        <span className="text-sm text-[#fbf9f7]/60">
-                            {t("footer.copyright")}
-                        </span>
-                    </div>
-
+                <div className="flex flex-col md:flex-row items-center justify-between border-t border-emerald-950/40 pt-8 gap-4">
+                    <span className="text-xs text-[#fbf9f7]/40">
+                        © {new Date().getFullYear()} Agent On Demand. All rights reserved.
+                    </span>
+                    <Link href="/contact" className="text-xs text-[#fbf9f7]/40 hover:text-[#00ff66] transition-colors">
+                        {t("footer.socials.optOut")}
+                    </Link>
                 </div>
             </div>
 
-            {/* Inline keyframe styles for staggered footer ripple waves */}
+            {/* Ripple animation */}
+            <div className="absolute left-1/2 bottom-0 -translate-x-1/2 pointer-events-none z-0">
+                {[0, 1.5, 3, 4.5, 6].map((delay) => (
+                    <div
+                        key={delay}
+                        className="absolute rounded-full border-[0.5px] border-[#00ff66]/10 ripple-animation"
+                        style={{ width: 80, height: 80, animationDuration: "15s", animationDelay: `${delay}s`, willChange: "transform, opacity", top: 0, left: 0 }}
+                    />
+                ))}
+            </div>
+
             <style>{`
                 @keyframes ripple {
-                    0% {
-                        transform: scale(1);
-                        opacity: 0.5;
-                    }
-                    75% {
-                        opacity: 0.2;
-                    }
-                    100% {
-                        transform: scale(28.0);
-                        opacity: 0;
-                    }
+                    0%   { transform: scale(1); opacity: 0.5; }
+                    75%  { opacity: 0.2; }
+                    100% { transform: scale(28.0); opacity: 0; }
                 }
                 .ripple-animation {
                     animation-name: ripple;
