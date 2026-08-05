@@ -137,7 +137,7 @@ export default function BlogContentClient({ post, content, slug }: BlogContentCl
       },
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": `https://www.agent-ondemand.com/blog/${slug}`
+        "@id": `https://www.agent-ondemand.com/${currentLocale}/blog/${slug}`
       }
     };
 
