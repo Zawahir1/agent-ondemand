@@ -162,6 +162,18 @@ export default function BlogContentClient({ post, content, slug }: BlogContentCl
 
   // Custom styling for rendering Keystatic rich document blocks
   const customRenderers = useMemo(() => ({
+    inline: {
+      link: ({ href, children }: any) => (
+        <a
+          href={href}
+          className="text-[#0f6] hover:opacity-80 transition-opacity underline decoration-[#0f6]/30 hover:decoration-[#0f6]"
+          target={href?.startsWith("http") ? "_blank" : undefined}
+          rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
+        >
+          {children}
+        </a>
+      ),
+    },
     block: {
       heading: ({ level, children }: any) => {
         const text = children.map((c: any) => c.text || '').join('');
